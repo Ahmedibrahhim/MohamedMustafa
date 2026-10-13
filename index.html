@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohammed Moustafa Gaber - MEP Engineering Portfolio</title> <!--[cite: 2] -->
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-main: #0a0a0b;        
+            --bg-card: #161618;        
+            --accent: #3b82f6;         
+            --text-main: #fcfcfc;      
+            --text-muted: #a1a1aa;     
+            --border-color: #27272a;   
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(10, 10, 11, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            padding: 1rem;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 8rem 1.5rem 6rem 1.5rem;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            border: 2px solid var(--border-color);
+            padding: 4px;
+            object-fit: cover;
+            margin-bottom: 1.5rem;
+            background-color: var(--bg-card);
+            transition: var(--transition);
+        }
+        
+        .profile-img:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin: 0 0 0.5rem 0;
+            letter-spacing: -1px;
+            font-weight: 700;
+            min-height: 3.5rem; 
+        }
+
+        .hero h2 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            margin: 0 0 2rem 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-info a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .contact-info a:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+        }
+
+        .contact-info a i {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+        
+        .contact-info a:hover i {
+            color: var(--accent);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-main);
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            letter-spacing: -0.5px;
+            min-height: 2.5rem;
+        }
+
+        .section-title i {
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+
+        /* Blinking Cursor for Typing Effect */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: var(--accent);
+            margin-left: 2px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Scroll Animations (Fade-in & Slide-up) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            border-left: 2px solid var(--border-color);
+            padding-left: 2rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.35rem;
+            top: 0.25rem;
+            width: 12px;
+            height: 12px;
+            background: var(--bg-main);
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            transition: var(--transition);
+        }
+
+        .timeline-item:hover::before {
+            background: var(--accent);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin: 0 0 0.25rem 0;
+            font-weight: 600;
+        }
+
+        .timeline-company {
+            font-weight: 400;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        /* Responsive Grid for Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.25rem;
+            align-items: start; 
+        }
+
+        @media (min-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .project-category-title {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin: 4rem 0 1.5rem 0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .project-category-title i {
+            color: var(--text-muted);
+        }
+
+        .accordion-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            border-color: #3f3f46;
+            transform: translateY(-2px);
+        }
+
+        /* Corrected Accordion Open State Class */
+        .accordion-item.accordion-open {
+            border-color: var(--accent);
+        }
+
+        .accordion-header {
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: var(--text-main);
+            user-select: none;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .accordion-icon {
+            color: var(--text-muted);
+            transition: transform 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: var(--bg-card);
+        }
+
+        .accordion-content-inner {
+            padding: 0 1.5rem 1.5rem 1.5rem;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            border-top: 1px solid transparent;
+        }
+
+        /* Active State - Now uses .accordion-open */
+        .accordion-item.accordion-open .accordion-icon {
+            transform: rotate(180deg);
+            color: var(--accent);
+        }
+        
+        .accordion-item.accordion-open .accordion-content-inner {
+            border-top: 1px solid var(--border-color);
+            margin-top: 0.5rem;
+            padding-top: 1rem;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-badge {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .skill-badge i {
+            color: var(--text-muted);
+            transition: var(--transition);
+        }
+
+        .skill-badge:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+        
+        .skill-badge:hover i {
+            color: var(--accent);
+        }
+
+        /* Education Card */
+        .edu-card {
+            background: var(--bg-card);
+            padding: 2rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+        
+        .edu-card:hover {
+            border-color: #3f3f46;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            text-align: center;
+            padding: 3rem 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav { gap: 1rem; flex-wrap: wrap; }
+            .hero h1 { font-size: 2.2rem; }
+            .container { padding: 3rem 1rem; }
+            .hero { padding: 5rem 1rem 4rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#about"><i class="fa-solid fa-user"></i> About</a>
+        <a href="#experience"><i class="fa-solid fa-briefcase"></i> Experience</a>
+        <a href="#projects"><i class="fa-solid fa-list-check"></i> Projects</a>
+        <a href="#skills"><i class="fa-solid fa-tools"></i> Skills</a>
+    </nav>
+
+    <header class="hero" id="about">
+        <img src="profile.jpg" alt="Mohammed Moustafa Gaber" class="profile-img reveal" onerror="this.src='https://ui-avatars.com/api/?name=Mohammed+Moustafa+Gaber&size=250&background=161618&color=fcfcfc'">
+        
+        <h1><span class="typewriter" data-text="Mohammed Moustafa Gaber"></span><span class="cursor"></span></h1> 
+        
+        <h2 class="reveal">Mechanical MEP Engineer</h2> <!--[cite: 2] -->
+        
+        <div class="contact-info reveal">
+            <a href="mailto:Mhammooodmoustafa1999@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a> <!--[cite: 2] -->
+            <a href="tel:+201066314728"><i class="fa-solid fa-phone"></i> (+20) 10 66314728</a> <!--[cite: 2] -->
+            <a href="https://www.linkedin.com/in/mohammed-moustafa-algersh" target="_blank"><i class="fa-brands fa-linkedin"></i> LinkedIn</a> <!--[cite: 2] -->
+            <a href="#"><i class="fa-solid fa-location-dot"></i> Al Qanater Al Khiria, Egypt</a> <!--[cite: 2] -->
+        </div>
+        
+        <p class="reveal" style="max-width: 600px; margin: 2.5rem auto 0 auto; color: var(--text-muted); font-size: 1.05rem;">
+            Results-driven MEP Design Engineer with 3 years of experience specializing in plumbing and fire protection systems design for residential, commercial, and healthcare projects in KSA. Skilled in developing complete water supply, drainage, stormwater, and firefighting systems using AutoCAD and Revit, ensuring full compliance with National Fire Protection Association standards and the Saudi Building Code. <!--[cite: 2] -->
+        </p>
+    </header>
+
+    <main class="container">
+        
+        <section id="experience" style="margin-bottom: 5rem;">
+            <h2 class="section-title">
+                <i class="fa-solid fa-clock-rotate-left reveal"></i> 
+                <span class="typewriter" data-text="Experience"></span><span class="cursor"></span>
+            </h2>
+            
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">04/2026 - Current</div> <!--[cite: 4] -->
+                    <h3 class="timeline-title">Fire Fighting and Plumbing Design Engineer</h3> <!--[cite: 2] -->
+                    <div class="timeline-company"><i class="fa-regular fa-building"></i> SHAKER Consultancy Group - Egypt</div> <!--[cite: 4] -->
+                    <p>Designed plumbing and fire protection systems for major infrastructure and tower projects. Prepared design layouts, performed hydraulic calculations, and coordinated MEP services using BIM.</p> <!--[cite: 4] -->
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-date">01/06/2023 - 18/12/2025</div> <!--[cite: 2] -->
+                    <h3 class="timeline-title">Fire Fighting and Plumbing Design Engineer</h3> <!--[cite: 2] -->
+                    <div class="timeline-company"><i class="fa-regular fa-building"></i> Afniah Engineering Consultants - Egypt</div> <!--[cite: 2] -->
+                    <p>Design and review of Fire Fighting Systems and plumbing systems for residential, commercial, and administrative buildings in KSA. Performed flow/load calculations, selected pumps, and coordinated with site engineers to monitor execution progress.</p> <!--[cite: 2] -->
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" style="margin-bottom: 5rem;">
+            <h2 class="section-title">
+                <i class="fa-solid fa-diagram-project reveal"></i> 
+                <span class="typewriter" data-text="Project Portfolio"></span><span class="cursor"></span>
+            </h2>
+
+            <!-- PART 1 -->
+            <h3 class="project-category-title reveal"><i class="fa-solid fa-road-bridge"></i> Infrastructure & Special Projects</h3>
+            
+            <div class="projects-grid">
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Abo Qir Metro Line <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 4] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed plumbing and fire protection systems for the Alexandria Metro Project in compliance with applicable codes, standards, and project specifications.</div> <!--[cite: 4] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Aquatic Weed Harvester Robot <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 4] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Autonomous robot designed to tackle the issue of excessive aquatic weed growth in bodies of water using remote control and advanced technology.</div> <!--[cite: 4] -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- PART 2 -->
+            <h3 class="project-category-title reveal"><i class="fa-solid fa-building"></i> Commercial, Residential & Healthcare</h3>
+            
+            <div class="projects-grid">
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Monte Galala - Towers <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 4] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Prepared coordinated Plumbing and Fire Fighting drawings using Revit and AutoCAD for a 9-tower, 22-floor project in Ain Sokhna. Performed hydraulic calculations and designed rainwater drainage.</div> <!--[cite: 4] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Residential Building (G+5), Riyadh <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 2] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed complete domestic water supply, drainage, and stormwater systems in accordance with SBC. Developed wet sprinkler and hose reel networks as per NFPA standards.</div> <!--[cite: 2] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        5-Star Hotel, Makkah <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 3] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed domestic water, hot water circulation, drainage, and grease waste systems. Developed complete fire protection systems and produced detailed Revit models.</div> <!--[cite: 3] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Hotel & Serviced Apartments, Dammam <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 3] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed plumbing systems with centralized hot water generation. Prepared hydraulic calculations, selected fire pumps, and coordinated MEP services using BIM.</div> <!--[cite: 3] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Private Hospital, Riyadh <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 3] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed domestic water, medical drainage, and stormwater systems. Developed fire protection systems considering healthcare occupancy requirements as per NFPA standards.</div> <!--[cite: 3] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Admin Office Building (G+10), Al Khobar <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 3] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed plumbing and drainage systems for multi-tenant office spaces. Developed firefighting networks, performed hydraulic calculations, and issued IFC drawings.</div> <!--[cite: 3] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Cheval Ladun & Athel Towers <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 4] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Designed comprehensive water supply, drainage, and firefighting systems for major tower projects located in Riyadh.</div> <!--[cite: 4] -->
+                    </div>
+                </div>
+
+                <div class="accordion-item reveal">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        Various Commercial & Residential <i class="fa-solid fa-chevron-down accordion-icon"></i> <!--[cite: 4] -->
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-content-inner">Executed design of water supply, drainage, and firefighting systems for Alkaliby Accommodation, El Ajoua Offices, Zeoof Exit 5, and Wahat Tower.</div> <!--[cite: 4] -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" style="margin-bottom: 5rem;">
+            <h2 class="section-title">
+                <i class="fa-solid fa-layer-group reveal"></i> 
+                <span class="typewriter" data-text="Technical Skills"></span><span class="cursor"></span>
+            </h2>
+            
+            <div class="skills-container">
+                <div class="skill-badge reveal" style="transition-delay: 0.1s;"><i class="fa-solid fa-pen-ruler"></i> AutoCAD</div> <!--[cite: 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.2s;"><i class="fa-solid fa-cube"></i> Revit</div> <!--[cite: 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.3s;"><i class="fa-solid fa-cubes"></i> Navisworks</div> <!--[cite: 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.4s;"><i class="fa-solid fa-laptop-code"></i> Elite Program</div> <!--[cite: 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.5s;"><i class="fa-solid fa-fire-extinguisher"></i> NFPA Standards</div> <!--[cite: 2, 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.6s;"><i class="fa-solid fa-book"></i> Saudi Building Code</div> <!--[cite: 2] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.7s;"><i class="fa-solid fa-calculator"></i> Hydraulic Calculations</div> <!--[cite: 2, 4] -->
+                <div class="skill-badge reveal" style="transition-delay: 0.8s;"><i class="fa-solid fa-network-wired"></i> MEP Coordination</div> <!--[cite: 4] -->
+            </div>
+        </section>
+
+        <section id="education">
+            <h2 class="section-title">
+                <i class="fa-solid fa-graduation-cap reveal"></i> 
+                <span class="typewriter" data-text="Education"></span><span class="cursor"></span>
+            </h2>
+            <div class="edu-card reveal">
+                <h3 style="margin-top: 0; font-size: 1.3rem;">Bachelor's Degree in Mechatronics Engineering</h3> <!--[cite: 4] -->
+                <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px;">6 October Faculty of Engineering - October 6 University | Feb 2023 | Grade: Excellent (Project)</p> <!--[cite: 4] -->
+                <p style="margin-bottom: 0; color: var(--text-muted);"><strong>Graduation Project:</strong> Aquatic weed harvester robot. An autonomous robot designed to tackle the issue of excessive aquatic weed growth in bodies of water using remote control and advanced technology.</p> <!--[cite: 4] -->
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <p>© 2026 Mohammed Moustafa Gaber. All Rights Reserved.</p> <!--[cite: 2] -->
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // 1. Fixed Accordion Logic
+        function toggleAccordion(element) {
+            const item = element.parentElement;
+            const content = element.nextElementSibling;
+            
+            // Close all others within the same grid container
+            const gridContainer = item.parentElement;
+            gridContainer.querySelectorAll('.accordion-item').forEach(acc => {
+                if (acc !== item) {
+                    acc.classList.remove('accordion-open');
+                    acc.querySelector('.accordion-content').style.maxHeight = null;
+                }
+            });
+
+            // Toggle clicked item
+            item.classList.toggle('accordion-open');
+            
+            if (item.classList.contains('accordion-open')) {
+                content.style.maxHeight = content.scrollHeight + "px";
+            } else {
+                content.style.maxHeight = null;
+            }
+        }
+
+        // 2. Intersection Observer for Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+
+        const revealObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            revealObserver.observe(el);
+        });
+
+        // 3. Intersection Observer for Typewriter Effect
+        const typeObserver = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const text = el.getAttribute('data-text');
+                    el.textContent = ''; 
+                    
+                    let i = 0;
+                    const typeSpeed = 60; 
+                    
+                    const typingInterval = setInterval(() => {
+                        if (i < text.length) {
+                            el.textContent += text.charAt(i);
+                            i++;
+                        } else {
+                            clearInterval(typingInterval);
+                        }
+                    }, typeSpeed);
+
+                    observer.unobserve(el); 
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.typewriter').forEach(el => {
+            el.textContent = ''; 
+            typeObserver.observe(el);
+        });
+    </script>
+</body>
+</html>
